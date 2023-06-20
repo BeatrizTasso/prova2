@@ -1,23 +1,54 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Consulta dos saldos</title>
+</head>
+<body>
+    <h1>Consulta Fluxo de Caixa</h1>
+    <?php
+        include('Conexao.php');
 
-include("conexao.php");
+        $tipo = $_POST['tipo'];
 
-$tipo = $_POST['tipo'];
-$valor = $_POST['valor'];
+        if ($tipo == 'entrada') {
+            $sql = "SELECT SUM(valor) AS valor FROM prova2 WHERE tipo = 'entrada'";
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_array($result);
 
+            foreach($result as $key => $row){
 
-echo "$tipo <br>";
-echo "$valor <br>";
+                echo "Entradas: ".$row['valor'];}
+}
+        
+            else if ($tipo == 'saida') {
+            
+            $sql = "SELECT SUM(valor) AS valor FROM prova2 WHERE tipo = 'saida'";
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_array($result);
 
-if($tipo == 'entrada'){
-    $sql="select sum(valor) valor from prova2 where tipo = 'entrada'";}
-else if($tipo == 'saida'){
-    $sql="select sum(valor) valor from prova2 wherw tipo = 'saida'";}
-else if($tipo == 'total'){
-    $sql= "select sum(case when tipo = 'entrada' then valor else 0 end) - 
-    sum (case when tipo = 'saida' then valor alse 0 end) as valor from prova2";
+            foreach($result as $key => $row){
+
+                echo "Saídas: ".$row['valor'];}
 }
 
+        else if ($tipo == 'saldo') {
 
-?>
-    <br><a href="index.php">Voltar</a>
+            $sql = "SELECT SUM(case when tipo = 'entrada' then valor else 0 end) -
+            SUM(case when tipo = 'saida' then valor else 0 end) as valor
+            from prova2";
+
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_array($result);
+
+            foreach($result as $key => $row){
+
+                echo "Saldo Total: ".$row['valor'];}
+}
+    ?>
+</body>
+</html>
+    
