@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h3>Prova 2</h3>
-    <br>
+    <h1>Fluxo Caixa</h1>
+    <br></br>
+    <h2>Prova 2</h2>
     <ul>
         <li><a href="cadastro_fluxo_caixa.html">Cadastrar</a></li>
         <li><a href="listar_fluxo_caixa.php">Listar</a></li>
