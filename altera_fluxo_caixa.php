@@ -39,11 +39,18 @@ $row = mysqli_fetch_array($result);
         value="<?php echo $row ['valor']?>">
         </div>
           <div>
-            <label for="senha">Senha: </label>
-            <input type="password" name="senha" id="senha" placeholder="Password" required
-            value="<?php echo $row ['senha']?>">
-
+            <label for="historico">Histórico: </label>
+            <input type="text" name="historico" id="historico" required
+            value="<?php echo $row ['historico']?>">
         </div>
+        <div>
+            <label for="cheque">Cheque</label>
+            <select name="cheque">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+        </div>
+        
     <input type="submit" value="Salvar">
 </fieldset>
 

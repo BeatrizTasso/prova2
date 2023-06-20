@@ -26,3 +26,4 @@ if($result){
     echo "Erro ao cadastrar!<br>";
 }
 ?>
+    <br><a href="index.php">Voltar</a>
